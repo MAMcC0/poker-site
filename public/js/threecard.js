@@ -38,15 +38,36 @@ function initGame(){
             if(User.wallet < anteAmount){
                 losersCorner();
             } else {
-                playerAnte(anteAmount);
+                playerAnteMatch (anteAmount);
             };
 
-        function playerAnte(anteAmount){
-            
+        function playerAnteMatch (anteAmount){
+            //figure out how to match ante function
         }
+
+        async function showCards(){
+            await playerAnteMatch 
+
+            //then renderplayerCards
+            playerAction()
+        };
         }
         
+        function playerAction(event){
+            switch(event.target){
+                case "Bet":
+                    bet();
+                    break;
+                case "Fold":
+                    fold();
+                    break;
+                default:
+                    fold();
+                    break;
 
+            }
+            .then()
+        }
 }
 
 function restartGame(){
