@@ -2,7 +2,23 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 router.put('/:id', (req, res) => {
-  
+  User.update(
+    {
+      wallet: req.body.wallet
+    }
+    {
+      where: {
+        id: req.body.id
+      },
+    }
+  )
+    .then((walletAmnt) => {
+      res.json(walletAmnt)
+    })
+    .catch((err) => res.json(err));
+});
+
+router.put('/:id', (req, res) => {
   User.update(
     {
       name: req.body.name,
