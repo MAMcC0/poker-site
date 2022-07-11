@@ -1,5 +1,5 @@
 var Hand = require('pokersolver').Hand;
-var {Game} = require('holdem-poker');
+var { Game } = require('holdem-poker');
 const { increment } = require('../../models/User');
 const User = require('../../models/User');
 
@@ -7,97 +7,124 @@ const User = require('../../models/User');
 let anteAmount = 0;
 let playerAnte;
 
-function initGame(){
-        //randomize card for dealer and player and call ante function
-        function ante(){
-            switch(User.rank){
-                case "C-Game": 
-                    anteAmount = 5;
-                    break;
-                case "Backing":
-                    anteAmount = 30;
-                    break;
-                case "Underdog":
-                    anteAmount = 50;
-                    break;
-                case "Joker":
-                    anteAmount = 75;
-                    break;
-                case "Manaic":
-                    anteAmount = 150;
-                    break;
-                case "High-Roller":
-                    anteAmount = 300;
-                    break;
-                case "The Whale":
-                    anteAmount = 1000;
-                    break;
-        
-            }
-            //function to get more money
-            if(User.wallet < anteAmount){
-                losersCorner();
-            } else {
-                playerAnteMatch (anteAmount);
-            };
+function initGame() {
+    //randomize card for dealer and player and call ante function
+    function ante() {
+        switch (User.rank) {
+            case "C-Game":
+                anteAmount = 5;
+                break;
+            case "Backing":
+                anteAmount = 30;
+                break;
+            case "Underdog":
+                anteAmount = 50;
+                break;
+            case "Joker":
+                anteAmount = 75;
+                break;
+            case "Manaic":
+                anteAmount = 150;
+                break;
+            case "High-Roller":
+                anteAmount = 300;
+                break;
+            case "The Whale":
+                anteAmount = 1000;
+                break;
 
-        function playerAnteMatch (anteAmount){
+        }
+        //function to get more money
+        if (User.wallet < anteAmount) {
+            losersCorner();
+        } else {
+            playerAnteMatch(anteAmount);
+        };
+
+        function playerAnteMatch(anteAmount) {
             //figure out how to match ante function
+            //store playerAnteMatch in var
         }
 
-        async function showCards(){
-            await playerAnteMatch 
-
+        async function showCards() {
+            await playerAnteMatch
+            // optional pair plus bet
             //then renderplayerCards
+
             playerAction()
         };
-        }
-        
-        function playerAction(event){
-            switch(event.target){
-                case "Bet":
-                    bet();
-                    break;
-                case "Fold":
-                    fold();
-                    break;
-                default:
-                    fold();
-                    break;
+    }
 
-            }
-            .then()
+    function playerAction(event) {
+        switch (event.target) {
+            case "Bet":
+                bet();
+                break;
+            case "Fold":
+                fold();
+                break;
+            default:
+                fold();
+                break;
+
         }
+    };
 }
 
-function restartGame(){
+
+
+function bet() {
+    //render bet module
+    //starts bet @ ante amount
+    // text for incremening bet by 5 dollars
+    // check to make sure they're not betting more than they have with if/else statement
+    // if so show message saying that cannot bet more than they have
+    // submit
+    // store in current amount wagered
+    // call solve hand function
+    solveHand();
+}
+
+const fold = async () => {
+    let lostMoney = playerAnteMatch + pairPlusBet;
+    let newWallet = User.wallet - lostMoney;
+
+    const response = await fetch(`/api/user/`, { //grab just a section to update
+        method: 'POST',
+    });
+
+    // figure out how to add new wallet to post request for user 
+    //increment hands lost in user as well
+}
+
+
+
+function restartGame() {
     initGame();
 }
 
-function bet(){
 
+function solveHand() {
+    let playerHand = Hand.solve("array", 'threecard', true);
+    let dealerHand = Hand.solve("dealerArray", 'threecard', true);
+    let winner = Hand.winners([playerHand, dealerHand]);
+
+    if (winner === playerHand) {
+        if (pairPlusBet) {
+            let gainedMoney = antePayout() + pairPlusPayout();
+            let newWallet = User.wallet + gainedMoney;
+
+            //post request for additoinal money
+        } else {
+            
+        }
+
+    }
 }
+//depending on winner reference ante paytable and bet paytable
 
-function fold(){
-
-}
-// start round function
-    // function needs to ask for ante bet
-            //switch case based on rank for how much the ante 
-    // prompt if they want to also place a pair plus bet
-    // if they chose yes prompt bet amount
-    // show user cards
-    //can decide an additional bet or fold
-
-    //if click bet button require bet to match ante or higher
-    //if fold call function to check cards
-
-    //function to check cards
-
-    //depending on winner reference ante paytable and bet paytable
-
-    //function to check if they got anything pair plus and increment money to paytable
-    //One pair: 1 to 1
+//function to check if they got anything pair plus and increment money to paytable
+//One pair: 1 to 1
 // Flush: 4 to 1
 // Straight: 5 to 1
 // Trips: 30 to 1
@@ -115,17 +142,17 @@ function fold(){
 
 
 
-//event listener for start function
-//event listener for play again function
-//event listener for bet button
-// event listener for fold button
-
-
 document //add query selectors still
-    .addEventListener('click',initGame)
+    .addEventListener('click', initGame)
+document
     .addEventListener('click', restartGame)
+document
     .addEventListener('click', bet)
+document
     .addEventListener('click', fold)
+document
     .addEventListener('click', incrementBet)
+document
     .addEventListener('click', decrementBet)
+document
     .addEventListener('click', matchAnte)
