@@ -1,16 +1,11 @@
-
+const User = require('../models/User');
 
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
     try {
-      const dbGameLanding = await Player.findAll({
-        include: [
-          {
-            model: Player,
+      const dbGameLanding = await User.findAll({
             attributes: ['money', 'username'],
-          },
-        ],
       });
   
       const players = dbGameLanding.map((player) =>

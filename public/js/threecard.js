@@ -2,10 +2,12 @@ var Hand = require('pokersolver').Hand;
 var { Game } = require('holdem-poker');
 const { increment } = require('../../models/User');
 const User = require('../../models/User');
-
+const cardContainer = document.querySelector('.card-container');
 
 let anteAmount = 0;
 let playerAnte;
+
+
 
 function initGame() {
     //randomize card for dealer and player and call ante function
@@ -86,6 +88,8 @@ function bet() {
 }
 
 const fold = async () => {
+
+    //add if statement 
     let lostMoney = playerAnteMatch + pairPlusBet;
     let newWallet = User.wallet - lostMoney;
 
@@ -103,6 +107,13 @@ function restartGame() {
     initGame();
 }
 
+function convertCardsNames (event){
+    if(event.target.matches("players-card")){
+        console.log(event.target);
+    }
+}
+
+
 
 function solveHand() {
     let playerHand = Hand.solve("array", 'threecard', true);
@@ -114,12 +125,20 @@ function solveHand() {
             let gainedMoney = antePayout() + pairPlusPayout();
             let newWallet = User.wallet + gainedMoney;
 
-            //post request for additoinal money
+            //post request for additional money
         } else {
-            
+            let newWallet = User.wallet + antePayout();
         }
 
+    } else {
+        fold();
     }
+
+    //put request for wallet 
+}
+
+function antePayout (){
+
 }
 //depending on winner reference ante paytable and bet paytable
 
@@ -156,3 +175,5 @@ document
     .addEventListener('click', decrementBet)
 document
     .addEventListener('click', matchAnte)
+document
+.addEventListener('click', convertCardsNames);
