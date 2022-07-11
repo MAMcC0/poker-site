@@ -1,7 +1,5 @@
-var Hand = require('pokersolver').Hand;
-var { Game } = require('holdem-poker');
-const { increment } = require('../../models/User');
-const User = require('../../models/User');
+import {Hand} from 'pokersolver';
+import User from '../../models/User';
 const cardContainer = document.querySelector('.card-container');
 
 let anteAmount = 0;
@@ -108,7 +106,7 @@ function restartGame() {
 }
 
 function convertCardsNames (event){
-    if(event.target.matches("players-card")){
+    if(event.target.className === "players-card"){
         console.log(event.target);
     }
 }

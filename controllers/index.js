@@ -1,11 +1,12 @@
-const router = require('express').Router();
+import express from "express";
+const router = express.Router();
 
 
-const homeRoutes = require('./homeRoutes');
-const threeCardRoutes = require('./threecardroutes');
+import homeRoutes from './homeRoutes.js';
+import threeCardRoutes from './threecardroutes.js';
 
 router.use('/', homeRoutes);
 
 router.use('/', threeCardRoutes);
 
-module.exports = router;
+export default router;
