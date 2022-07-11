@@ -1,16 +1,11 @@
-
-
-const router = require('express').Router();
+import User from '../models/User.js';
+import express from "express";
+const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-      const dbGameLanding = await Player.findAll({
-        include: [
-          {
-            model: Player,
+      const dbGameLanding = await User.findAll({
             attributes: ['money', 'username'],
-          },
-        ],
       });
   
       const players = dbGameLanding.map((player) =>
@@ -29,4 +24,4 @@ router.get('/', async (req, res) => {
 
 
 
-module.exports = router;
+export default router;

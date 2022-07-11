@@ -1,4 +1,5 @@
-const router = require('express').Router();
+import express from "express";
+const router = express.Router();
 
 const faces = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
 const suits = ["clubs", "diamonds", "spades", "hearts"];
@@ -15,4 +16,8 @@ router.get('/threecardpoker', (req, res) => {
   res.render('threecardviews/threecard', {card1: getRandomCardImgSrc(), card2: getRandomCardImgSrc(), card3: getRandomCardImgSrc()});
 });
 
-module.exports = router;
+
+
+export default router;
+
+
