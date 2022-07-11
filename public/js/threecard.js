@@ -1,7 +1,65 @@
-// require poker solver
-// require holdem
+var Hand = require('pokersolver').Hand;
+var {Game} = require('holdem-poker');
+const { increment } = require('../../models/User');
+const User = require('../../models/User');
 
 
+let anteAmount = 0;
+let playerAnte;
+
+function initGame(){
+        //randomize card for dealer and player and call ante function
+        function ante(){
+            switch(User.rank){
+                case "C-Game": 
+                    anteAmount = 5;
+                    break;
+                case "Backing":
+                    anteAmount = 30;
+                    break;
+                case "Underdog":
+                    anteAmount = 50;
+                    break;
+                case "Joker":
+                    anteAmount = 75;
+                    break;
+                case "Manaic":
+                    anteAmount = 150;
+                    break;
+                case "High-Roller":
+                    anteAmount = 300;
+                    break;
+                case "The Whale":
+                    anteAmount = 1000;
+                    break;
+        
+            }
+            //function to get more money
+            if(User.wallet < anteAmount){
+                losersCorner();
+            } else {
+                playerAnte(anteAmount);
+            };
+
+        function playerAnte(anteAmount){
+            
+        }
+        }
+        
+
+}
+
+function restartGame(){
+    initGame();
+}
+
+function bet(){
+
+}
+
+function fold(){
+
+}
 // start round function
     // function needs to ask for ante bet
             //switch case based on rank for how much the ante 
@@ -42,8 +100,11 @@
 // event listener for fold button
 
 
-document
+document //add query selectors still
     .addEventListener('click',initGame)
     .addEventListener('click', restartGame)
     .addEventListener('click', bet)
     .addEventListener('click', fold)
+    .addEventListener('click', incrementBet)
+    .addEventListener('click', decrementBet)
+    .addEventListener('click', matchAnte)
