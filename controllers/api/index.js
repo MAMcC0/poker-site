@@ -1,8 +1,9 @@
-const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const threecardRoutes = require('./threecardroutes');
+import express from 'express';
+const router = express.Router();
+import userRoutes from './userRoutes.js';
+import threecardRoutes from './threecardroutes.js';
 
 router.use('/users', userRoutes);
 router.use('/threecardroutes', threecardRoutes);
 
-module.exports = router;
+export default router;

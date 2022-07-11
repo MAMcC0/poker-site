@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+import express from "express";
+const router = express.Router();
+import  User  from '../../models/User.js';
 
 router.put('/:id', (req, res) => {
   
@@ -91,4 +92,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
