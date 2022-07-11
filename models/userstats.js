@@ -39,4 +39,4 @@ UserStats.init(
   }
 );
 
-module.exports = GameType;
+module.exports = UserStats;
