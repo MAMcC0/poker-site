@@ -16,4 +16,8 @@ router.get('/threecardpoker', (req, res) => {
   res.render('threecardviews/threecard', {card1: getRandomCardImgSrc(), card2: getRandomCardImgSrc(), card3: getRandomCardImgSrc()});
 });
 
+
+
 export default router;
+
+
