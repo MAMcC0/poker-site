@@ -1,6 +1,39 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.put('/:id', (req, res) => {
+  
+  User.update(
+    {
+      name: req.body.name,
+      email: req.body.email,
+      user_name: req.body.user_name,
+      password: req.body.password,
+    },
+    {
+      where: {
+        id: req.body.id
+      },
+    }
+  )
+    .then((updatedUser) => {
+      res.json(updatedUser);
+    })
+    .catch((err) => res.json(err));
+});
+
+router.delete('/:id', (req, res) => {
+  User.destroy({
+    where: {
+      id:req.body.id
+    },
+  })
+    .then((deletedUser) => {
+      res.json(deletedUser);
+    })
+    .catch((err) => res.json(err));
+});
+
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
