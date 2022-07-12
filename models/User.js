@@ -46,8 +46,15 @@ User.init(
     },
     rank: {
         type: DataTypes.STRING
-    }
+    },
+    handsWon: {
+      type: DataTypes.INTEGER
+    },
+    handsLost: {
+      type: DataTypes.INTEGER  
+    },
   },
+
   {
     hooks: {
       beforeCreate: async (newUserData) => {

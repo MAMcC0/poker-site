@@ -16,7 +16,7 @@ router.post('/:bet', async (req, res) => {
       req.session.save(() => {
         req.session.activeGame_bet = activeGameData.bet;
   
-        res.status(200).json(userData);
+        res.status(200).json(activeGameData);
       });
     } catch (err) {
       res.status(400).json(err);
