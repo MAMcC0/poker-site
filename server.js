@@ -1,11 +1,16 @@
 import path from 'path';
-const __dirname = path.resolve(path.dirname(decodeURI(new URL(import.meta.url).pathname)));
+import { dirname } from 'path'
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url))
+//const __dirname = path.resolve(path.dirname(decodeURI(new URL(import.meta.url).pathname)));
+//const __dirname = `C:\\Users\\mered\\Documents\\bootcamp-lessons\\Projects\\Beginner's-luck\\poker-site`
 import express from 'express';
 import session from 'express-session';
 import engine from 'express-handlebars';
 import create from 'express-handlebars';
 import Router from './controllers/index.js';
 // import {helpers} from './utils/helpers.js';
+console.log(__dirname)
 
 import sequelize from './config/connection.js';
 import SequelizeStore from 'connect-session-sequelize';
@@ -31,13 +36,13 @@ const sess = {
 
 app.use(session(sess));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 // Inform Express.js on which template engine to use
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(Router);
 
