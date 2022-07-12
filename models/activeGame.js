@@ -29,8 +29,12 @@ ActiveGame.init(
     },
     user_wallet: {
       type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "wallet",
+      },
 
-    }
+    },
   },
   {
     sequelize,
