@@ -1,12 +1,22 @@
-import { solve, winners } from 'pokersolver';
-import { rank, wallet } from '../../models/User.js';
+import router from "../../controllers";
+
 const cardContainer = document.querySelector('.card-container');
 
 let anteAmount = 0;
 let playerAnte;
 
+
+//start game button calls fetch for GET route for active game
+// PUT wallet amount in active (foriegn key)
+//call for GET Route Card = randomize, sanatize with usable names for cards => front
+// GET Route for User 
+//needs to go to user routes GET request
+// onclick of ok put anteAmout into Active Game Route
+
 function initGame() {
     //randomize card for dealer and player and call ante function
+
+    router.get('/activeGame')
     function ante() {
         switch (rank) {
             case "C-Game":
@@ -32,6 +42,7 @@ function initGame() {
                 break;
 
         }
+        //check in backend
         //function to get more money
         if (wallet < anteAmount) {
             losersCorner();
@@ -43,6 +54,8 @@ function initGame() {
             //figure out how to match ante function
             //store playerAnteMatch in var
         }
+                //fetch request POST to activeGame
+               
 
         async function showCards() {
             await playerAnteMatch
@@ -52,7 +65,11 @@ function initGame() {
             playerAction()
         };
     }
-
+//template literal fetch for either bet or fold POST
+//button after bet to go to showdown
+//pass in hands into card route for solve hands, winner, string 
+//OK button for message for win/loss that triggers fetch POST request for wallet 
+// start round button appeaers
     function playerAction(event) {
         switch (event.target) {
             case "Bet":
