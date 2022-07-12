@@ -14,8 +14,12 @@ UserStats.init(
     games_played: {
         type: DataTypes.INTEGER,
     },
-    wallet: {
+    user_wallet: {
         type: DataTypes.INTEGER,
+        references: {
+          model: "user",
+          key: "wallet"
+        },
     },
     hands_won: {
        type: DataTypes.INTEGER,
@@ -39,4 +43,4 @@ UserStats.init(
   }
 );
 
-module.exports = UserStats;
+export default UserStats;
