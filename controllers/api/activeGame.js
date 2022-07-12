@@ -18,6 +18,27 @@ router.put('/:total_bet', async (req, res) => {
       res.status(400).json(err);
     }
   });
+
+router.delete('/activeGame', async (req, res) => {
+  try {
+    const activeGameCurrent = await ActiveGame.destroy({
+      where: {
+        id: 1,
+      },
+    });
+
+    if(!activeGameCurrent){
+      res.status(404).json({message :'No game currently being played!'});
+      return;
+    }
+
+    res.status(200).json(activeGameCurrent);
+  } catch (err){
+    res.status(500).json(err);
+  }
+});
+
+
 // make sure to grab the input from front end in an array in an object ("type", "amount")
   const totalBetAdd = (userInput) => {
 
