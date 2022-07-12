@@ -26,6 +26,10 @@ ActiveGame.init(
     },
     fold: {
       type: DataTypes.BOOLEAN,
+    },
+    user_wallet: {
+      type: DataTypes.INTEGER,
+
     }
   },
   {
