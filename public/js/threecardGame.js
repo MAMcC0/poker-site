@@ -3,7 +3,7 @@ import router from "../../controllers";
 const cardContainer = document.querySelector('.card-container');
 
 
-let betAmount;
+
 
 
 //start game button calls fetch for GET route for active game
@@ -15,7 +15,7 @@ let betAmount;
 
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
-    router.get('/User')
+    router.get('/ser')
 
 
     function ante() {
