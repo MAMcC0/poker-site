@@ -5,8 +5,6 @@ const cardContainer = document.querySelector('.card-container');
 let anteAmount = 0;
 let playerAnte;
 
-
-
 function initGame() {
     //randomize card for dealer and player and call ante function
     function ante() {
