@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import {sequelize} from '../config/connection';
+import { sequelize } from '../config/connection';
 
-class ActiveGame extends Model {}
+class ActiveGame extends Model { }
 
 ActiveGame.init(
   {
@@ -11,17 +11,7 @@ ActiveGame.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    ante_bet: {
-       type: DataTypes.INTEGER,
-    },
-    pair_plus_active: {
-       type: DataTypes.BOOLEAN,
-    },
-    bet: {
+    total_bet: {
       type: DataTypes.INTEGER,
     },
     fold: {
@@ -41,7 +31,7 @@ ActiveGame.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'gameType',
+    modelName: 'ActiveGame',
   }
 );
 
