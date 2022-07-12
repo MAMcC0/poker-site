@@ -2,6 +2,17 @@ import express from "express";
 const router = express.Router();
 import  User  from '../../models/User.js';
 
+router.get('/:id', (req, res) => {
+  try {
+    const userGame = await User.findOne({
+      attributes: ['rank', 'wallet']
+    })
+    res.render('rank', {userGame})
+  } catch (err) {
+    res.status(500).json(err);
+  } 
+});
+
 router.put('/:id', (req, res) => {
   User.update(
     {

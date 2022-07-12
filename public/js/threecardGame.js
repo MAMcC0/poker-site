@@ -5,12 +5,14 @@ const cardContainer = document.querySelector('.card-container');
 let anteAmount = 0;
 let playerAnte;
 
+
 //start game button calls fetch for GET route for active game
 // PUT wallet amount in active (foriegn key)
 //call for GET Route Card = randomize, sanatize with usable names for cards => front
 // GET Route for User 
 //needs to go to user routes GET request
 // onclick of ok put anteAmout into Active Game Route
+
 function initGame() {
     //randomize card for dealer and player and call ante function
 
