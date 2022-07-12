@@ -109,6 +109,9 @@ function convertCardsNames (event){
     if(event.target.className === "players-card"){
         console.log(event.target);
     }
+
+
+    
 }
 
 

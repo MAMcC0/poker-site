@@ -6,7 +6,7 @@ router.put('/:id', (req, res) => {
   User.update(
     {
       wallet: req.body.wallet
-    }
+    },
     {
       where: {
         id: req.body.id
