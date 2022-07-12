@@ -13,6 +13,7 @@ ActiveGame.init(
     },
     total_bet: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     fold: {
       type: DataTypes.BOOLEAN,

@@ -2,8 +2,8 @@ import router from "../../controllers";
 
 const cardContainer = document.querySelector('.card-container');
 
-let anteAmount = 0;
-let playerAnte;
+
+let betAmount;
 
 
 //start game button calls fetch for GET route for active game
@@ -13,10 +13,11 @@ let playerAnte;
 //needs to go to user routes GET request
 // onclick of ok put anteAmout into Active Game Route
 
-function initGame() {
+const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
+    router.get('/User')
 
-    router.get('/activeGame')
+
     function ante() {
         switch (rank) {
             case "C-Game":
@@ -44,119 +45,22 @@ function initGame() {
         }
         //check in backend
         //function to get more money
-        if (wallet < anteAmount) {
+        if (walletDisplay < anteAmountReq) {
             losersCorner();
-        } else {
-            playerAnteMatch(anteAmount);
-        };
+        } 
 
-        function playerAnteMatch(anteAmount) {
-            //figure out how to match ante function
-            //store playerAnteMatch in var
-        }
-                //fetch request POST to activeGame
-               
+       
 
-        async function showCards() {
-            await playerAnteMatch
-            // optional pair plus bet
-            //then renderplayerCards
 
-            playerAction()
-        };
-    }
-//template literal fetch for either bet or fold POST
-//button after bet to go to showdown
-//pass in hands into card route for solve hands, winner, string 
-//OK button for message for win/loss that triggers fetch POST request for wallet 
-// start round button appeaers
-    function playerAction(event) {
-        switch (event.target) {
-            case "Bet":
-                bet();
-                break;
-            case "Fold":
-                fold();
-                break;
-            default:
-                fold();
-                break;
-
-        }
     };
-}
+};
 
 
 
-function bet() {
-    //render bet module
-    //starts bet @ ante amount
-    // text for incremening bet by 5 dollars
-    // check to make sure they're not betting more than they have with if/else statement
-    // if so show message saying that cannot bet more than they have
-    // submit
-    // store in current amount wagered
-    // call solve hand function
-    solveHand();
-}
-
-const fold = async () => {
-
-    //add if statement 
-    let lostMoney = playerAnteMatch + pairPlusBet;
-    let newWallet = wallet - lostMoney;
-
-    const response = await fetch(`/api/user/`, { //grab just a section to update
-        method: 'POST',
-    });
-
-    // figure out how to add new wallet to post request for user 
-    //increment hands lost in user as well
-}
 
 
 
-function restartGame() {
-    initGame();
-}
 
-function convertCardsNames (event){
-    if(event.target.className === "players-card"){
-        console.log(event.target);
-    }
-
-
-    
-}
-
-
-
-function solveHand() {
-    let playerHand = solve("array", 'threecard', true);
-    let dealerHand = solve("dealerArray", 'threecard', true);
-    let winner = winners([playerHand, dealerHand]);
-
-    if (winner === playerHand) {
-        if (pairPlusBet) {
-            let gainedMoney = antePayout() + pairPlusPayout();
-            let newWallet = wallet + gainedMoney;
-
-            //post request for additional money
-        } else {
-            let newWallet = wallet + antePayout();
-        }
-
-    } else {
-        fold();
-    }
-
-    //put request for wallet 
-}
-
-function antePayout (){
-
-}
-//depending on winner reference ante paytable and bet paytable
 
 //function to check if they got anything pair plus and increment money to paytable
 //One pair: 1 to 1
@@ -178,7 +82,8 @@ function antePayout (){
 
 
 document //add query selectors still
-    .addEventListener('click', initGame)
+ //query selector for start game button
+    .addEventListener('click', startButtonHandler)
 document
     .addEventListener('click', restartGame)
 document
@@ -197,20 +102,32 @@ document
 export default initGame
 
 
-// active game table
-//user hands
-//dealer hands
-//ante bet
-// bet
-// fold boolen
-// money lost 
-
-//card database
-//card suit
-//card face
 
 
-//santize cards on backend on start game
-//bet api call to the database to increase the pot
-//increment/decrement money
-// increment/decrement wins
+//start button calls init game that fetches user info 
+// displays rank and wallet amount for user
+//then ante function is called that compares required ante amount to wallet
+//amount and if wallet amount is < anteamount goes to loserscorner module
+//if it isnt it calls active game putroute for total amount bet
+
+//then module pops up for optional pair plus bet, if they hit yes
+//bet module pops up to increments, lets users increment by 5
+// checks wallet amount to make sure that it is not more than wallet
+//otherwise does not let them make the bet
+//post route to active game total amount bet
+// if choose not to make pair plus 
+// then cards are shown 
+//after cards are shown allow player to bet with same increment function
+// check wallet again
+// post to total amount bet
+
+//send cards back to cards route for solve hand function
+// return who is winner and winning hand
+// pop up in module, ok button for module
+// event listener here sends simulatanoues requests for 
+// incrementing hands won/lost in user and taking the total
+// amount bet either out of wallet or comparing the winning hand
+// string to payout table function for multipliers for ante and pair plus
+// add to wallet whateve results are
+// show restart game button that deletes last active game table and calls
+// init game function again
