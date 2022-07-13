@@ -152,7 +152,4 @@ router.post('/:handsLost', async (req, res) => {
   }
 });
 
-
-
-
 export default router;
