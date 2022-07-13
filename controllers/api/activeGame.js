@@ -47,9 +47,6 @@ router.delete('/activeGame', async (req, res) => {
       case "ante":
         ante(userInput.amount);
         break;
-      case "pair-plus":
-          pairPlus(userInput.amount);
-          break;
       case "bet":
           bet(userInput.amount);
           break;
@@ -59,12 +56,6 @@ router.delete('/activeGame', async (req, res) => {
       totalBet += amount;
       return totalBet;
     }
-
-    const pairPlus = (amount) => {
-      totalBet += amount;
-      return totalBet;
-    }
-
     const bet = (amount) => {
       totalBet += amount;
       return totalBet;

@@ -1,5 +1,8 @@
+import e from "express";
 
-let anteAmount;
+let anteAmount = {
+    type: 'ante',
+};
 
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
@@ -17,56 +20,63 @@ const startButtonHandler = async (event) => {
             const ante = (rank) => {
                 switch (rank) {
                     case "C-Game":
-                        anteAmount = 5;
+                        anteAmount.amount = 5;
                         break;
                     case "Backing":
-                        anteAmount = 30;
+                        anteAmount.amount = 30;
                         break;
                     case "Underdog":
-                        anteAmount = 50;
+                        anteAmount.amount = 50;
                         break;
                     case "Joker":
-                        anteAmount = 75;
+                        anteAmount.amount = 75;
                         break;
                     case "Manaic":
-                        anteAmount = 150;
+                        anteAmount.amount = 150;
                         break;
                     case "High-Roller":
-                        anteAmount = 300;
+                        anteAmount.amount = 300;
                         break;
                     case "The Whale":
-                        anteAmount = 1000;
+                        anteAmount.amount = 1000;
                         break;
 
                 }
-                if (wallet < anteAmount) {
+                if (wallet < anteAmount.amount) {
                     losersCorner();
                 } else {
-                    requireAnteAmount(anteAmount);
+                    requireAnteAmount(anteAmount.amount);
                 }
 
                 const requireAnteAmount = (ante) => {
-                    let anteMsg = `The ante is ${ante} to play`;
+                    let anteMsg = `The ${rank} ante is $${ante} to play`;
                     return anteMsg;
                 }
 
             };
+        } else {
+            console.error("Failed to fetch user information");
         }
     };
 }
 
-const anteOkHandler = () => {
-    
+const anteOkHandler = async (event) => {
+    if(event.target){
+        const response = await fetch(`/api/game/total_bet`, {
+            method: 'PUT',
+            body: anteAmount,
+        });
+
+        //ask if response ok for boolean or need a promise
+      if(response.ok){
+        let total_bet = response;
+        return total_bet;
+      }
+      else {
+        console.error("Failed to add ante amount to total bet")
+      }
+    };
 }
-
-//function to check if they got anything pair plus and increment money to paytable
-//One pair: 1 to 1
-// Flush: 4 to 1
-// Straight: 5 to 1
-// Trips: 30 to 1
-// Any straight flush: 40 to 1
-// Mini Royal Flush (Ace, King, Queen of the same suit): 200 to 1
-
 
 //ante payout table
 // Straight Flush – 5:1 payout, odds of 1 in 453
@@ -107,12 +117,6 @@ export default initGame
 //amount and if wallet amount is < anteamount goes to loserscorner module
 //if it isnt it calls active game putroute for total amount bet
 
-//then module pops up for optional pair plus bet, if they hit yes
-//bet module pops up to increments, lets users increment by 5
-// checks wallet amount to make sure that it is not more than wallet
-//otherwise does not let them make the bet
-//post route to active game total amount bet
-// if choose not to make pair plus 
 // then cards are shown 
 //after cards are shown allow player to bet with same increment function
 // check wallet again
