@@ -6,10 +6,6 @@ import  ActiveGame  from '../../models/activeGame.js';
 import User from '../../models/User.js';
 
 
-
-
-//Question: is it :bet for this post route?
-
 router.put('/total_bet', async (req, res) => {
     try {
       const activeGameBets = await ActiveGame.update(totalBetAdd(req.body));
