@@ -1,0 +1,32 @@
+[
+    {
+       "name":"Dusty",
+       "email":"dusty@cat.com",
+       "user_name":"catdaddy",
+       "password":"password",
+       "wallet":50,
+       "rank":"C-game",
+       "handsWon":3,
+       "handLost":1
+    },
+    {
+       "name":"Corky",
+       "email":"corky@dog.com",
+       "user_name":"bigdawg",
+       "password":"password1",
+       "wallet":55,
+       "rank":"Joker",
+       "handsWon":5,
+       "handLost":2
+    },
+    {
+       "name":"Maya",
+       "email":"maya@crazy.com",
+       "user_name":"imcrazy",
+       "password":"password2",
+       "wallet":60,
+       "rank":"Underdog",
+       "handsWon":7,
+       "handLost":9
+    }    
+]
