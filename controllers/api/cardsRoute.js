@@ -1,14 +1,16 @@
-// import express from "express";
-// import Cards from "../../models/cards";
-// const router = express.Router();
+ import express from "express";
+ import Cards from "../../models/cards.js";
+ const router = express.Router();
 
-// router.get('/', (req,res) => {
-//     try {
-//        res.render('game', genCardPool(_CARD_ARRAY))   
-//     } catch (err) {
-//         res.json(err)
-//     }
-// })
+
+
+ router.get('/', (req,res) => {
+     try {
+        res.render('game', genCardPool(_CARD_ARRAY))   
+     } catch (err) {
+         res.json(err)
+     }
+ })
 
 const _CARD_ARRAY = [
     {
@@ -313,3 +315,5 @@ const genCardPool = (arr) => {
 }
 
 console.log(genCardPool(_CARD_ARRAY).cardSvg)
+
+export default router;
