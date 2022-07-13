@@ -1,19 +1,19 @@
-import { solve, winners } from 'pokersolver';
+import Hand from 'pokersolver';
 import express from "express";
 const router = express.Router();
 // import  User  from '../../models/User.js';
 import  ActiveGame  from '../../models/activeGame.js';
+import User from '../../models/User.js';
 
 
-router.get()
+
 
 //Question: is it :bet for this post route?
 
-router.put('/:total_bet', async (req, res) => {
+router.put('/total_bet', async (req, res) => {
     try {
-      const activeGameBets = await ActiveGame.create(totalBetAdd());
+      const activeGameBets = await ActiveGame.update(totalBetAdd(req.body));
         res.status(200).json(activeGameBets);
-      ;
     } catch (err) {
       res.status(400).json(err);
     }
@@ -71,3 +71,8 @@ router.delete('/activeGame', async (req, res) => {
     }
      return totalBet;
   }
+
+  //call table make data row for card data to be stored
+
+
+  export default router;

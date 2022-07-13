@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../config/connection';
+import  sequelize  from '../config/connection.js';
 
 class ActiveGame extends Model { }
 
@@ -13,15 +13,16 @@ ActiveGame.init(
     },
     total_bet: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     fold: {
       type: DataTypes.BOOLEAN,
     },
-    user_wallet: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "wallet",
+        key: "id",
       },
 
     },

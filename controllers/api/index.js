@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
 import userRoutes from './userRoutes.js';
-// import threecardRoutes from './threecardroutes.js';
+import ActiveGame from './activeGame.js';
 
 router.use('/users', userRoutes);
-// router.use('/threecardroutes', threecardRoutes);
+router.use('/game', ActiveGame);
 
 export default router;
