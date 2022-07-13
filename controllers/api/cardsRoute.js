@@ -282,7 +282,7 @@ const genCardPool = (arr) => {
             cardPool.push(randomCard)
         } else {
             console.log("duplicate")
-            i--           
+            i-- ;          
         }
     }
     console.log (cardPool)

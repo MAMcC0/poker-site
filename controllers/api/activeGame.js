@@ -6,10 +6,6 @@ import  ActiveGame  from '../../models/activeGame.js';
 import User from '../../models/User.js';
 
 
-
-
-//Question: is it :bet for this post route?
-
 router.put('/total_bet', async (req, res) => {
     try {
       const activeGameBets = await ActiveGame.update(totalBetAdd(req.body));
@@ -47,9 +43,6 @@ router.delete('/activeGame', async (req, res) => {
       case "ante":
         ante(userInput.amount);
         break;
-      case "pair-plus":
-          pairPlus(userInput.amount);
-          break;
       case "bet":
           bet(userInput.amount);
           break;
@@ -59,12 +52,6 @@ router.delete('/activeGame', async (req, res) => {
       totalBet += amount;
       return totalBet;
     }
-
-    const pairPlus = (amount) => {
-      totalBet += amount;
-      return totalBet;
-    }
-
     const bet = (amount) => {
       totalBet += amount;
       return totalBet;
