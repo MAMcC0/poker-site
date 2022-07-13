@@ -15,6 +15,10 @@
      }
  })
 
+//make a put route to pass playerWon boolean
+// call solve function on 'put' route
+// polish get route
+
 const _CARD_ARRAY = [
     {
         "suit":"c",
