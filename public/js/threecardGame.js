@@ -8,6 +8,9 @@ let betAmount = {
     type: 'bet',
 }
 
+let rank;
+let wallet;
+
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
     if (event.target) {
@@ -47,7 +50,7 @@ const startButtonHandler = async (event) => {
 
                 }
                 if (wallet < anteAmount.amount) {
-                    losersCorner();
+                    losersCorner(); //still have to write
                 } else {
                     requireAnteAmount(anteAmount.amount);
                 }
@@ -97,13 +100,18 @@ const showCards = async () => {
     } else {
         console.error('Could not fetch cards');
     };
-    renderBetMod()
+    //render buttons for bet or fold
 }
 
 const bet = async (event) => {
     event.preventDefault();
     const betInput = document.querySelector('#bet-amount').value.trim();
+
     betAmount.amount = betInput;
+
+    if (betInput < wallet){
+        return //message not allowing submission 
+    } else {
     if (betInput) {
         const response = await fetch(`/api/game/total_bet`, {
             method: 'PUT',
@@ -118,20 +126,34 @@ const bet = async (event) => {
             console.error("Failed to add ante amount to total bet")
         }
 
-    }
+    }}
     solve()
 }
 
 
 const solve = () => {
-
+     
 }
 
+const restartGame = async (event) => {
+    
+    if(event.target){
+        const response = await fetch('/api/game/activeGame', {
+            method: 'DELETE'
+        });
+
+        if(response.ok){
+            document.location.replace('/api/game');
+        } else {
+            alert('Failed to restart game');
+        }
+    }
+}
 
 //ante payout table
 // Straight Flush – 5:1 payout, odds of 1 in 453
 // Three-of-a-Kind – 4:1 payout, odds of 1 in 415
-// Straight – 1:1 payout, odds of 1 in 29.6
+// Straight – 2:1 payout, odds of 1 in 29.6
 
 //plain bets 2:1
 
