@@ -14,11 +14,11 @@ UserStats.init(
     games_played: {
         type: DataTypes.INTEGER,
     },
-    user_wallet: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "user",
-          key: "wallet"
+          key: "id"
         },
     },
     hands_won: {

@@ -1,4 +1,4 @@
-import { solve, winners } from 'pokersolver';
+import Hand from 'pokersolver';
 import express from "express";
 const router = express.Router();
 // import  User  from '../../models/User.js';
@@ -6,7 +6,7 @@ import  ActiveGame  from '../../models/activeGame.js';
 import User from '../../models/User.js';
 
 
-router.get()
+
 
 //Question: is it :bet for this post route?
 
@@ -52,3 +52,6 @@ router.put('/total_bet', async (req, res) => {
   }
 
   //call table make data row for card data to be stored
+
+
+  export default router;

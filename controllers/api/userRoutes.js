@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import  User  from '../../models/User.js';
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const userGame = await User.findOne({
       attributes: ['rank', 'wallet']
