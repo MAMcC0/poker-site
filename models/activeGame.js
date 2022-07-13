@@ -19,7 +19,7 @@ ActiveGame.init(
       type: DataTypes.BOOLEAN,
     },
     data: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     user_id: {
       type: DataTypes.INTEGER,

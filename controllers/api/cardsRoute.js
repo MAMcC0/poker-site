@@ -2,8 +2,9 @@
  import Cards from "../../models/cards.js";
  const router = express.Router();
  import pokersolver from 'pokersolver';
+import ActiveGame from "../../models/activeGame.js";
  const Hand = pokersolver.Hand
-//  const HandSolver = require('pokersolver').Hand
+
 
 
 
@@ -13,9 +14,28 @@
      } catch (err) {
          res.json(err)
      }
- })
+ });
 
-//make a put route to pass playerWon boolean
+ router.put('/playerWon', async (req,res) => {
+    try {
+        const gameInfo = solveGame(req.body)
+        const ag = await ActiveGame.update(
+            {
+                playerWon: gameInfo.won
+                
+            },
+            {
+                where: {id:1}
+            }
+            )
+            res.json(gameInfo)
+            }
+            catch (err) {
+                res.json(err)
+            }
+});
+
+// make a put route to pass playerWon boolean
 // call solve function on 'put' route
 // polish get route
 
@@ -322,35 +342,46 @@ const genCardPool = (arr) => {
     
 }
 
-console.log(genCardPool(_CARD_ARRAY).cardSvg)
+// console.log(genCardPool(_CARD_ARRAY).cardSvg)
 
 console.log('-----------------------------------')
 
-let playerHand = genCardPool(_CARD_ARRAY).playerCards
-let dealerHand = genCardPool(_CARD_ARRAY).dealerCards
 
-console.log(playerHand);
-console.log(dealerHand);
-
-var hand1 = Hand.solve(playerHand,'threecard',false);
-var hand2 = Hand.solve(dealerHand,'threecard',true);
-
-hand1.index = 0;
-hand2.index = 1;
-var winner = Hand.winners([hand1, hand2]); // hand2
-
-console.log(winner[0].index)
-
-let gameWinner;
-if (winner[0].index === 0) {
-    gameWinner = hand1
-} else {
-    gameWinner = hand2
+const solveGame = (randomCards) => {
+    let playerHand = randomCards.playerCards
+    let dealerHand = randomCards.dealerCards
+    
+    console.log(playerHand);
+    console.log(dealerHand);
+    
+    var hand1 = Hand.solve(playerHand,'threecard',false);
+    var hand2 = Hand.solve(dealerHand,'threecard',true);
+    
+    hand1.index = 0;
+    hand2.index = 1;
+    var winner = Hand.winners([hand1, hand2]); // hand2
+    
+    console.log(winner[0].index)
+    
+    let gameWinner;
+    if (winner[0].index === 0) {
+        gameWinner = hand1
+        console.log(gameWinner.name)
+        console.log(gameWinner.descr)
+        return {won: true, name: gameWinner.name, descr: gameWinner.descr}
+    } else {
+        gameWinner = hand2
+        console.log(gameWinner.name)
+        console.log(gameWinner.descr)
+        return {won: false, name: gameWinner.name, descr: gameWinner.descr}
+    }
+    
+    
+    
+    
 }
 
-console.log(gameWinner.name)
-console.log(gameWinner.descr)
-
+solveGame(genCardPool(_CARD_ARRAY))
 export default router;
 
 
