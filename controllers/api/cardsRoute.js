@@ -1,6 +1,9 @@
  import express from "express";
  import Cards from "../../models/cards.js";
  const router = express.Router();
+ import pokersolver from 'pokersolver';
+ const Hand = pokersolver.Hand
+//  const HandSolver = require('pokersolver').Hand
 
 
 
@@ -275,6 +278,7 @@ const _CARD_ARRAY = [
     }
 ]
 
+//Random card generator 
 const genCardPool = (arr) => {
     const cardPool = []
     for (let i = 0; i < 6; i++) {
@@ -316,4 +320,35 @@ const genCardPool = (arr) => {
 
 console.log(genCardPool(_CARD_ARRAY).cardSvg)
 
+console.log('-----------------------------------')
+
+let playerHand = genCardPool(_CARD_ARRAY).playerCards
+let dealerHand = genCardPool(_CARD_ARRAY).dealerCards
+
+console.log(playerHand);
+console.log(dealerHand);
+
+var hand1 = Hand.solve(playerHand,'threecard',false);
+var hand2 = Hand.solve(dealerHand,'threecard',true);
+
+hand1.index = 0;
+hand2.index = 1;
+var winner = Hand.winners([hand1, hand2]); // hand2
+
+console.log(winner[0].index)
+
+let gameWinner;
+if (winner[0].index === 0) {
+    gameWinner = hand1
+} else {
+    gameWinner = hand2
+}
+
+console.log(gameWinner.name)
+console.log(gameWinner.descr)
+
 export default router;
+
+
+
+
