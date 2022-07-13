@@ -15,8 +15,11 @@ ActiveGame.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    fold: {
+    playerWon: {
       type: DataTypes.BOOLEAN,
+    },
+    data: {
+      type: DataTypes.STRING
     },
     user_id: {
       type: DataTypes.INTEGER,
