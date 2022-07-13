@@ -1,62 +1,63 @@
 
+let anteAmount;
 
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
-    if(event.target){
+    if (event.target) {
         //? get id from users using login?
         const response = await fetch(`/api/users/${id}`, {
             method: 'GET',
         });
 
-        if(response.ok){
+        if (response.ok) {
             console.log(response);
-        };
-    }
+            let rank = response.user.rank;
+            let wallet = response.user.wallet;
+            ante(rank)
+            const ante = (rank) => {
+                switch (rank) {
+                    case "C-Game":
+                        anteAmount = 5;
+                        break;
+                    case "Backing":
+                        anteAmount = 30;
+                        break;
+                    case "Underdog":
+                        anteAmount = 50;
+                        break;
+                    case "Joker":
+                        anteAmount = 75;
+                        break;
+                    case "Manaic":
+                        anteAmount = 150;
+                        break;
+                    case "High-Roller":
+                        anteAmount = 300;
+                        break;
+                    case "The Whale":
+                        anteAmount = 1000;
+                        break;
 
+                }
+                if (wallet < anteAmount) {
+                    losersCorner();
+                } else {
+                    requireAnteAmount(anteAmount);
+                }
 
-    function ante() {
-        switch (rank) {
-            case "C-Game":
-                anteAmount = 5;
-                break;
-            case "Backing":
-                anteAmount = 30;
-                break;
-            case "Underdog":
-                anteAmount = 50;
-                break;
-            case "Joker":
-                anteAmount = 75;
-                break;
-            case "Manaic":
-                anteAmount = 150;
-                break;
-            case "High-Roller":
-                anteAmount = 300;
-                break;
-            case "The Whale":
-                anteAmount = 1000;
-                break;
+                const requireAnteAmount = (ante) => {
+                    let anteMsg = `The ante is ${ante} to play`;
+                    return anteMsg;
+                }
 
+            };
         }
-        //check in backend
-        //function to get more money
-        if (walletDisplay < anteAmountReq) {
-            losersCorner();
-        } 
-
-       
-
-
     };
-};
+}
 
-
-
-
-
-
-
+const anteOkHandler = () => {
+    
+}
 
 //function to check if they got anything pair plus and increment money to paytable
 //One pair: 1 to 1
@@ -78,10 +79,10 @@ const startButtonHandler = async (event) => {
 
 
 document //add query selectors still
- //query selector for start game button
+    //query selector for start game button
     .addEventListener('click', startButtonHandler)
 document
-    .addEventListener('click', restartGame)
+    .addEventListener('click', anteOkHandler)
 document
     .addEventListener('click', bet)
 document
@@ -93,7 +94,7 @@ document
 document
     .addEventListener('click', matchAnte)
 document
-.addEventListener('click', convertCardsNames);
+    .addEventListener('click', convertCardsNames);
 
 export default initGame
 
