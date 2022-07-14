@@ -1,157 +1,176 @@
 .profile-background {
-    background-image: url();
+  background-image: url();
 }
 
 
 
 .logo-navbar {
-    width: 20%;
+  width: 20%;
 }
+
 body {
-    background-image: url('/img/site-images/pokerpage.png');
+  background-image: url('/img/site-images/pokerpage.png');
 
 }
+
 .homepage-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
 }
 
 .start-game-container {
-width: 500px;
-height: 500px;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-flex-direction: column;
-color: white;
-margin: 0 auto;
-border: 1px solid;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  margin: 0 auto;
+  border: 1px solid;
 }
 
 .start-game-btn {
-background: #2F3061;
-padding: 10px;
-border-radius: 5px;
-color:white;
+  background: #2F3061;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
 }
-.start-game-btn:active{
+
+.start-game-btn:active {
   color: rgb(248, 248, 116);
 }
 
-#logo-homer{
-height: 12%;
-width: 12%
-
-}
-div #logo-homer{
-display: inline-block;
-position: relative;
-max-width: 15%;
-display: flex;
-flex-direction: row;
-align-content: center;
-justify-content: space-around;
-}
-#logo-div{
-display: flex;
-flex-direction: row;
-align-content: center;
-justify-content: space-between;
-align-items: center;
-}
-.wallet-value{
-color:yellow;
-font-size: 25px;
+#logo-homer {
+  height: 12%;
+  width: 12%
 }
 
-#logo-div ul{
-list-style-type: none;
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-content: center;
-justify-content: space-between;
-align-items: baseline;
-
-}
-#logo-div ul li{
-padding:15px;
-margin: 10px;
-}
-#logo-div ul li a{
-text-decoration: none;
-color: yellow;
-font-family: 'Exo 2', sans-serif;
+div #logo-homer {
+  display: inline-block;
+  position: relative;
+  max-width: 15%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
 }
 
-#logo-div ul li a:hover{
-color: rgb(248, 248, 213)
+#logo-div {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-body {
-    height: 90vh;
-    width: 90%;
-    background-image: url('img/site-images/loginbackground.jpeg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-  }
+.wallet-value {
+  color: yellow;
+  font-size: 25px;
+}
 
-  .centered {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: solid;
-      backdrop-filter: contrast(8%);
-      border-radius: 25px;
-      padding: 2%;
-  }
+#logo-div ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: baseline;
 
-  .img-overlay-wrap svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-  }
+}
 
-  .svg-container {
-      transform: rotate(-10deg);
-      
-  }
+#logo-div ul li {
+  padding: 15px;
+  margin: 10px;
+}
 
-  .svg-size {
-      width: 55%;
-      height: 60%;
-      margin: -10% 0 0 -2%;
-      animation-name: animate;
-      animation-duration: 0.8s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-  }
-  .sign-up-color{
-    background-color: #2F3061;
-    color: white;
-  }
-  #form-font-change{
-    font-family: 'Exo 2', sans-serif;
-    font-size: 15px; 
-    color: black;
-  }
-  .title{
-    font-family: 'Exo 2', sans-serif;
-    font-size: 2rem;
-  }
-  @keyframes animate {
-    0% {
-      filter:
-      drop-shadow(
-        0px 0px 1px rgb(248, 235, 118)
-        
-      )
-      
-    }
-  }
+#logo-div ul li a {
+  text-decoration: none;
+  color: yellow;
+  font-family: 'Exo 2', sans-serif;
+}
 
+#logo-div ul li a:hover {
+  color: rgb(248, 248, 213)
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid;
+  backdrop-filter: contrast(8%);
+  border-radius: 25px;
+  padding: 2%;
+}
+
+.img-overlay-wrap svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.svg-container {
+  transform: rotate(-10deg);
+
+}
+
+.svg-size {
+  width: 55%;
+  height: 60%;
+  margin: -10% 0 0 -2%;
+  animation-name: animate;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.sign-up-color {
+  background-color: #2F3061;
+  color: white;
+}
+
+#form-font-change {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 15px;
+  color: black;
+}
+
+.title {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 2rem;
+}
+
+.game-background {
+  max-height: 1100px;
+  max-width: 1200px;
+  margin:auto;
+}
+
+.poker-table {
+  max-height: 100%;
+  max-width: 100%;
+ text-align: center;
+
+}
+.play-btn{
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, 10%);
+  transform: translate(-50%, 25%);
+  background-color: #2F3061;
+  color: white;
+}
+@keyframes animate {
+  0% {
+    filter:
+      drop-shadow(0px 0px 1px rgb(248, 235, 118))
+  }
+}
