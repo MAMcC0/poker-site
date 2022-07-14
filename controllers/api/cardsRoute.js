@@ -5,7 +5,15 @@
 import ActiveGame from "../../models/activeGame.js";
  const Hand = pokersolver.Hand
 
-
+//route from homepage start button to threecard page
+ router.get('/threecard', (req,res) => {
+     console.log("wowow");
+    try {
+       res.render('threecard');   
+    } catch (err) {
+        res.json(err)
+    }
+});
 
 
  router.get('/', (req,res) => {

@@ -1,13 +1,55 @@
+<style>
+    body {
+        background-image: url('/img/site-images/pokerpage.png');
+    }
+    .homepage-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: white;
+    }
+
+    .start-game-container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    margin: 0 auto;
+    border: 1px solid;
+}
+
+    .start-game-btn {
+    background: violet;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
+
 <main class="homepage-main">
+
     <img class="homepage-backgroud" src="public/img/site-images/pokerpage.png">
     <div class="homepage-header">
         <div>
             <img class="homepage-logo" src="public/img/site-images/Beginners-Luck.svg">
         </div>
+
         <div class="homepage-current-wallet">
-            <p class="wallet-value">Wallet:</p>
+            <p class="wallet-value">Wallet: {{wallet}}</p>
         </div>
         <div class="username">
+            {{user_name}}
+        </div>
+    </div>
+    <div class="start-game-container">
+        <div class="title">Three Card Poker</div>
+        <div class="start-game-btn">
+            <a href="threeCardGame.js">Start Game!</a>
         </div>
     </div>
 </main>
+
+ <script src="/threecardGame.js"></script>
