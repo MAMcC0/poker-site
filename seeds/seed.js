@@ -4,7 +4,7 @@ import  User  from '../models/User.js';
 import userData from './userProfileData.json' assert {type: 'json'};
 
 const seedDatabase = async () => {
-     await sequelize.sync();
+     await sequelize.sync({force : true});
 
      await User.bulkCreate(userData, {
         individualHooks: true,
