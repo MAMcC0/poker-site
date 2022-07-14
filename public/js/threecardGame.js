@@ -11,13 +11,11 @@ let betAmount = {
 let rank;
 let wallet;
 
-const renderPage = 
-
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
     if (event.target) {
         //? get id from users using login?
-        const response = await fetch(`/api/users/${id}`, {
+        const response = await fetch(`/user/users/${id}`, {
             method: 'GET',
         });
 
@@ -71,7 +69,7 @@ const startButtonHandler = async (event) => {
 
 const anteOkHandler = async (event) => {
     if (event.target) {
-        const response = await fetch(`/api/game/total_bet`, {
+        const response = await fetch(`/user/game/total_bet`, {
             method: 'PUT',
             body: anteAmount,
             headers: { 'Content-Type': 'application/json' },
@@ -91,7 +89,7 @@ const anteOkHandler = async (event) => {
 
 const showCards = async () => {
 
-    const response = await fetch(`/api/cards/`, {
+    const response = await fetch(`/user/cards/`, {
         method: 'GET',
     });
     // is this how we render cards?
@@ -115,7 +113,7 @@ const bet = async (event) => {
         return //message not allowing submission 
     } else {
     if (betInput) {
-        const response = await fetch(`/api/game/total_bet`, {
+        const response = await fetch(`/user/game/total_bet`, {
             method: 'PUT',
             body: betAmount,
             headers: { 'Content-Type': 'application/json' },
@@ -140,12 +138,12 @@ const solve = () => {
 const restartGame = async (event) => {
     
     if(event){
-        const response = await fetch('/api/game/activeGame', {
+        const response = await fetch('/user/game/activeGame', {
             method: 'DELETE'
         });
 
         if(response.ok){
-            document.location.replace('/api/game');
+            document.location.replace('/user/game');
         } else {
             alert('Failed to restart game');
         }
