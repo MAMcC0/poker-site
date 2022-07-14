@@ -55,7 +55,7 @@ const startButtonHandler = async () => {
             ante(rank);
             console.log(anteAmount);
             if (wallet < anteAmount.amount) {
-                losersCorner(); //still have to write
+                losersCorner(); 
             } else {
                 const requireAnteAmount = (ante) => {
                     let anteMsg = `The ${rank} ante is $${ante} to play`;
