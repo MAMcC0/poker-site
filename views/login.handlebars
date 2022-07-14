@@ -2,6 +2,8 @@
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
     body {
+      height: 90vh;
+      width: 90%;
       background-image: url('img/site-images/loginbackground.jpeg');
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -26,14 +28,29 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     }
 
     .svg-container {
-        transform: rotate(-30deg);
+        transform: rotate(-10deg);
         
     }
 
     .svg-size {
         width: 55%;
         height: 60%;
-        margin: -19% 0 0 -2%;
+        margin: -10% 0 0 -2%;
+        animation-name: animate;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes animate {
+      0% {
+        filter:
+        drop-shadow(
+          0px 0px 1px rgb(248, 235, 118)
+          
+        )
+        
+      }
     }
 
 
