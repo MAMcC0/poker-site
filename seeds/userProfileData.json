@@ -28,5 +28,15 @@
        "rank":"Underdog",
        "handsWon":7,
        "handLost":9
-    }    
+    },
+    {
+      "name":"test",
+      "email":"test@test.com",
+      "user_name":"test",
+      "password":"password",
+      "wallet":65,
+      "rank":"The Whale",
+      "handsWon":4,
+      "handLost":5
+   }      
 ]

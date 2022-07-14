@@ -1,17 +1,25 @@
 import express from "express";
 const router = express.Router();
 import  User  from '../../models/User.js';
+import withAuth from "../../utils/auth.js";
 
-router.get('/:id', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
-    const userGame = await User.findOne({
-      attributes: ['rank', 'wallet']
+    const userGame = await User.findByPk( req.session.user_id, 
+      {
+      attributes: ['rank', 'wallet'],
+      
     })
-    res.render('rank', {userGame})
+    const user = userGame.get({plain:true})
+    console.log(user)
+    res.render('homepage', {...user,logged_in:true})
+    
   } catch (err) {
     res.status(500).json(err);
   } 
 });
+
+
 
 router.put('/:id', (req, res) => {
   User.update(
@@ -99,15 +107,19 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      // document.cookie = user_id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      console.log(req.session)
+      return res.json({ user: req.session.user_id, message: 'You are now logged in!' });
     });
 
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
