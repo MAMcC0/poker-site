@@ -23,23 +23,18 @@ router.get('/', withAuth, async (req, res) => {
     }
 })
 
-router.get('/login', async (req, res) => { 
-  try {
-    const dbGameLanding = await User.findAll({
-          attributes: ['wallet', 'user_name'],
-    });
+router.get('/login', (req, res) => { 
+   
+      // If the user is already logged in, redirect the request to another route
+      if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+      }
+    
+      res.render('login');
 
-    const players = dbGameLanding.map((player) =>
-      player.get({ plain: true })
-    );
-    res.render('homepage', {
-      players,
-      loggedIn: req.session.loggedIn
-    });
- } catch (err) {
-   console.log(err);
-   res.status(500).json(err);
- }
+  
+
 })
 
 export default router;
