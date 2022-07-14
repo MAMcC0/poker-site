@@ -18,7 +18,7 @@ import ActiveGame from "../../models/activeGame.js";
 
  router.get('/', (req,res) => {
      try {
-        res.render('game', genCardPool(_CARD_ARRAY))   
+        res.json(genCardPool(_CARD_ARRAY));   
      } catch (err) {
          res.json(err)
      }

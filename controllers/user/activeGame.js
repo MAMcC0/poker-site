@@ -23,8 +23,16 @@ router.get('/', async (req, res) => {
 
 router.put('/total_bet', async (req, res) => {
     try {
-      const activeGameBets = await ActiveGame.update(totalBetAdd(req.body));
-        res.status(200).json(activeGameBets);
+      console.log(req.body, "this is the body")
+      const betToAdd = totalBetAdd(req.body);
+      console.log(betToAdd, "this is the bet")
+      const activeGameBets = await ActiveGame.update({total_bet: betToAdd}, 
+      {
+        where: {
+          id: req.session.user_id,
+        }
+      });
+        res.status(200).json(betToAdd);
       
     } catch (err) {
       res.status(400).json(err);
@@ -54,16 +62,7 @@ router.delete('/activeGame', async (req, res) => {
 // make sure to grab the input from front end in an array in an object ("type", "amount")
   const totalBetAdd = (userInput) => {
 
-    let totalBet;
-    switch (userInput.type){
-      case "ante":
-        ante(userInput.amount);
-        break;
-      case "bet":
-          bet(userInput.amount);
-          break;
-    };
-
+    let totalBet = 0;
     const ante = (amount) => {
       totalBet += amount;
       return totalBet;
@@ -72,7 +71,12 @@ router.delete('/activeGame', async (req, res) => {
       totalBet += amount;
       return totalBet;
     }
-     return totalBet;
+    switch (userInput.type){
+      case "ante":
+        return ante(userInput.amount);
+      case "bet":
+         return bet(userInput.amount);
+    };
   }
 
   //call table make data row for card data to be stored
