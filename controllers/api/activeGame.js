@@ -4,7 +4,9 @@ const router = express.Router();
 // import  User  from '../../models/User.js';
 import  ActiveGame  from '../../models/activeGame.js';
 
-
+router.get('/', async (req, res) => {
+  res.render('game')
+})
 
 router.put('/total_bet', async (req, res) => {
     try {
