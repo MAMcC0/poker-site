@@ -3,10 +3,10 @@ const router = express.Router();
 
 
 import homeRoutes from './homeRoutes.js';
-import apiRoutes from './api/index.js';
+import apiRoutes from './user/index.js';
 
 router.use('/', homeRoutes);
 
-router.use('/api', apiRoutes);
+router.use('/user', apiRoutes);
 
 export default router;

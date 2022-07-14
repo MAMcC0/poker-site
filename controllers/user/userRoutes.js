@@ -153,12 +153,6 @@ router.post('/:handsLost', async (req, res) => {
 });
 
 //route from homepage start button to threecard page
-router.get('/game', (req,res) => {
- try {
-    res.redirect('/game');   
- } catch (err) {
-     res.json(err)
- }
-});
+
 
 export default router;
