@@ -91,15 +91,6 @@ font-family: 'Exo 2', sans-serif;
 color: rgb(248, 248, 213)
 }
 
-body {
-    height: 90vh;
-    width: 90%;
-    background-image: url('img/site-images/loginbackground.jpeg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-  }
-
   .centered {
       position: fixed;
       top: 50%;
@@ -143,6 +134,9 @@ body {
   .title{
     font-family: 'Exo 2', sans-serif;
     font-size: 2rem;
+  }
+  .game-background{
+    background-image: url('img/site-images/poker-table.png');
   }
   @keyframes animate {
     0% {
