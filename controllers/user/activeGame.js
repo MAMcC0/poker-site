@@ -1,11 +1,24 @@
 import Hand from 'pokersolver';
 import express from "express";
 const router = express.Router();
-// import  User  from '../../models/User.js';
+import  User  from '../../models/User.js';
 import  ActiveGame  from '../../models/activeGame.js';
 
+
 router.get('/', async (req, res) => {
-  res.render('threecard')
+  try {
+    const userGame = await User.findByPk( req.session.user_id, 
+      {
+      attributes: ['rank', 'wallet'],
+      
+    })
+    const user = userGame.get({plain:true})
+    console.log(user)
+    res.render('threecard', {...user,logged_in:true})
+    
+  } catch (err) {
+    res.status(500).json(err);
+  } 
 })
 
 router.put('/total_bet', async (req, res) => {

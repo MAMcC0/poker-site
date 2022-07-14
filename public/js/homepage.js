@@ -1,7 +1,4 @@
-const onLoadRender = async () => {
-   
-     
-        
+const onLoadRender = async () => { 
         const response = await fetch(`/user/users/`, {
             method: 'GET',
         });

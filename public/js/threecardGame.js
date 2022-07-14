@@ -11,22 +11,24 @@ let betAmount = {
 let rank;
 let wallet;
 
-const startButtonHandler = async (event) => {
+const startButtonHandler = async () => {
+    console.log("inside function")
     //randomize card for dealer and player and call ante function
-    if (event.target) {
-        //? get id from users using login?
-        const response = await fetch(`/user/users/${id}`, {
+    
+        const response = await fetch(`/user/users/data`, {
             method: 'GET',
         });
-
         if (response.ok) {
-            console.log(response);
-            let rank = response.user.rank;
-            let wallet = response.user.wallet;
-            ante(rank)
+           
+             const json = await response.json();
+             console.log(json);
+            let rank = json.rank;
+            let wallet = json.wallet;
+            console.log(rank)
             const ante = (rank) => {
+                console.log(typeof rank);
                 switch (rank) {
-                    case "C-Game":
+                    case "C-game":
                         anteAmount.amount = 5;
                         break;
                     case "Backing":
@@ -49,23 +51,24 @@ const startButtonHandler = async (event) => {
                         break;
 
                 }
-                if (wallet < anteAmount.amount) {
-                    losersCorner(); //still have to write
-                } else {
-                    requireAnteAmount(anteAmount.amount);
-                }
-
+            };
+            ante(rank);
+            console.log(anteAmount);
+            if (wallet < anteAmount.amount) {
+                losersCorner(); //still have to write
+            } else {
                 const requireAnteAmount = (ante) => {
                     let anteMsg = `The ${rank} ante is $${ante} to play`;
                     return anteMsg;
                 }
-
-            };
+                requireAnteAmount(anteAmount.amount);
+            }
         } else {
             console.error("Failed to fetch user information");
         }
+
     };
-}
+
 
 const anteOkHandler = async (event) => {
     if (event.target) {
@@ -162,16 +165,17 @@ const restartGame = async (event) => {
 
 document //add query selectors still
     //query selector for start game button
+    .querySelector('.play-btn')
     .addEventListener('click', startButtonHandler)
-document
-    .addEventListener('click', anteOkHandler)
-document
-    .addEventListener('click', bet)
-document
-    .addEventListener('click', solve())
+// document
+//     .addEventListener('click', anteOkHandler)
+// document
+//     .addEventListener('click', bet)
+// document
+//     .addEventListener('click', solve())
 
-document
-    .addEventListener('click', restartGame())
+// document
+//     .addEventListener('click', restartGame())
 
 
 
