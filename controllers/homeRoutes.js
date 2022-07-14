@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 import withAuth from '../utils/auth.js';
 
-router.get('/', withAuth, async (req, res) => { 
+router.get('/', async (req, res) => { 
      try {
        const dbGameLanding = await User.findAll({
              attributes: ['wallet', 'user_name'],

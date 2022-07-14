@@ -1,55 +1,36 @@
 <style>
     body {
         background-image: url('/img/site-images/pokerpage.png');
-    }
-    .homepage-header {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        color: white;
-    }
 
-    .start-game-container {
-    width: 500px;
-    height: 500px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    margin: 0 auto;
-    border: 1px solid;
-}
-
-    .start-game-btn {
-    background: violet;
-    padding: 10px;
-    border-radius: 5px;
-}
+    }
 </style>
-
+ <nav>
+    
+        <div id="logo-div">
+             <img class="homepage-logo" src="/img/site-images/Beginners-Luck.svg" id="logo-homer">
+            <ul class="homepage-current-wallet">
+            <li>
+            <p class="wallet-value">${{wallet}}</p>
+            </li>
+            <li>
+                <a href="#">Profile</a>
+            </li>
+            <li>
+                <a href="#">Logout</a>
+            </li>
+            </ul>
+        </div>
+     
+   
+</nav>
 <main class="homepage-main">
 
-    <img class="homepage-backgroud" src="public/img/site-images/pokerpage.png">
-    <div class="homepage-header">
-        <div>
-            <img class="homepage-logo" src="public/img/site-images/Beginners-Luck.svg">
-        </div>
-
-        <div class="homepage-current-wallet">
-            <p class="wallet-value">Wallet: {{wallet}}</p>
-        </div>
-        <div class="username">
-            {{user_name}}
-        </div>
-    </div>
     <div class="start-game-container">
         <div class="title">Three Card Poker</div>
         <div class="start-game-btn">
-            <a href="threeCardGame.js">Start Game!</a>
+            Start Game!
         </div>
     </div>
 </main>
 
- <script src="/threecardGame.js"></script>
+ <script src="/js/homepage.js"></script>

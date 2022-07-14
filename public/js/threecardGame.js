@@ -1,4 +1,4 @@
-import e from "express";
+
 
 let anteAmount = {
     type: 'ante',
@@ -137,7 +137,7 @@ const solve = () => {
 
 const restartGame = async (event) => {
     
-    if(event.target){
+    if(event){
         const response = await fetch('/api/game/activeGame', {
             method: 'DELETE'
         });
@@ -173,7 +173,7 @@ document
 document
     .addEventListener('click', restartGame())
 
-export default startButtonHandler;
+
 
 
 
