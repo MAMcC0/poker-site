@@ -74,7 +74,7 @@ const anteOkHandler = async (event) => {
     if (event.target) {
         const response = await fetch(`/user/game/total_bet`, {
             method: 'PUT',
-            body: anteAmount,
+            body: JSON.stringify(anteAmount),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -94,12 +94,17 @@ const showCards = async () => {
 
     const response = await fetch(`/user/cards/`, {
         method: 'GET',
+
+
     });
+    const json = await response.json();
+    console.log(json)
     // is this how we render cards?
     if (response.ok) {
-        let card1 = response[0].cardSvg[0];
-        let card2 = response[0].cardSvg[1];
-        let card3 = response[0].cardSvg[2];
+
+        let card1 = json.cardSvg[0];
+        let card2 = json.cardSvg[1];
+        let card3 = json.cardSvg[2];
     } else {
         console.error('Could not fetch cards');
     };
@@ -167,8 +172,9 @@ document //add query selectors still
     //query selector for start game button
     .querySelector('.play-btn')
     .addEventListener('click', startButtonHandler)
-// document
-//     .addEventListener('click', anteOkHandler)
+ document
+ .querySelector('.ante-btn')
+     .addEventListener('click', anteOkHandler)
 // document
 //     .addEventListener('click', bet)
 // document

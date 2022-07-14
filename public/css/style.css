@@ -168,6 +168,22 @@ div #logo-homer {
   background-color: #2F3061;
   color: white;
 }
+.card-container{
+  display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 325px;
+}
+.resize-card{
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+}
 @keyframes animate {
   0% {
     filter:
