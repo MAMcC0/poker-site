@@ -5,7 +5,7 @@ const router = express.Router();
 import  ActiveGame  from '../../models/activeGame.js';
 
 router.get('/', async (req, res) => {
-  res.render('game')
+  res.render('threecard')
 })
 
 router.put('/total_bet', async (req, res) => {

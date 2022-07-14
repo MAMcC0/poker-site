@@ -7,6 +7,6 @@ import apiRoutes from './api/index.js';
 
 router.use('/', homeRoutes);
 
-router.use('/api', apiRoutes);
+router.use('/user', apiRoutes);
 
 export default router;

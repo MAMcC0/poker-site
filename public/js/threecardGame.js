@@ -11,6 +11,8 @@ let betAmount = {
 let rank;
 let wallet;
 
+const renderPage = 
+
 const startButtonHandler = async (event) => {
     //randomize card for dealer and player and call ante function
     if (event.target) {
