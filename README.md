@@ -6,3 +6,18 @@
 
 #### Technologies Used: java script, mySQL, inquirer, sequelize, handlebars
 
+### Installation Instructions:
+Run npm i to install all dependencies
+
+### Links: 
+
+Heroku Deployed: https://sensationnel-baguette-60188.herokuapp.com/login
+Github repo: https://github.com/MAMcC0/poker-site
+
+
+
+### Live Site Images
+![Screenshot (68)](https://user-images.githubusercontent.com/86750930/179135199-cc8278dd-273d-478d-9b94-a12eda69dfed.png)
+![Screenshot (69)](https://user-images.githubusercontent.com/86750930/179135279-c2fcc414-10c0-45ca-b1e6-cd7f79e13f9d.png)
+
+
