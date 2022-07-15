@@ -20,13 +20,16 @@
      
    
 </nav>
-<main class="homepage-main">
 
-    <div class="start-game-container">
+<main class="homepage-main">
+     <div class="start-game-container">
         <div class="title">Three Card Poker</div>
-        <a href="/user/game"> <div class="start-game-btn">
-            Start Game!
-        </div></a>
+        
+        <div class="start-game-btn">
+            <form method="GET", action="/user/game">
+                <button type="submit">Start Game!</button>
+            </form>
+        </div>
     </div>
 </main>
 
